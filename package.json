@@ -16,7 +16,8 @@
   "scripts": {
     "test:format": "prettier --check .",
     "test:lint": "npx eslint .",
-    "test": "npm run test:format && npm run test:lint",
+    "test:bcb": "mkdir test-bcb && cd test-bcb && npm init -y && npm i ../../baseline-browser-mapping browserslist browserslist-config-baseline &&jq '. += {\"browserslist\":[\"extends browserslist-config-baseline\"]}' package.json >p && mv p package.json && npx browserslist && cd ../ && rm -rf test-bcb",
+    "test": "npm run prepare && npm run test:format && npm run test:lint && npm run test:bcb",
     "prepare": "rm -rf dist; prettier . --write; tsc",
     "refresh-downstream": "npx tsx scripts/refresh-downstream.ts",
     "refresh-static": "npx tsx scripts/refresh-static.ts"
