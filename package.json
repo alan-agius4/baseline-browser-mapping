@@ -14,7 +14,9 @@
   "types": "./dist/index.d.ts",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test:format": "prettier --check .",
+    "test:lint": "npx eslint .",
+    "test": "npm run test:format && npm run test:lint",
     "prepare": "rm -rf dist; prettier . --write; tsc",
     "refresh-downstream": "npx tsx scripts/refresh-downstream.ts",
     "refresh-static": "npx tsx scripts/refresh-static.ts"
@@ -26,8 +28,10 @@
   },
   "devDependencies": {
     "@types/node": "^22.15.17",
+    "eslint-plugin-new-with-error": "^5.0.0",
     "prettier": "^3.5.3",
-    "typescript": "^5.7.2"
+    "typescript": "^5.7.2",
+    "typescript-eslint": "^8.32.1"
   },
   "repository": "git+https://github.com/web-platform-dx/baseline-browser-mapping.git"
 }

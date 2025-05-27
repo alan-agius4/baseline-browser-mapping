@@ -162,7 +162,7 @@ const compareVersions = (
 const getCompatibleFeaturesByDate = (date: Date): Feature[] => {
   return Object.entries(features)
     .filter(
-      ([feature_id, feature]) =>
+      ([, feature]) =>
         feature.status.baseline_low_date &&
         new Date(feature.status.baseline_low_date) <= date,
     )
